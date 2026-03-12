@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sale Alerts – Shop with Shay</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<header>
+  <div><h1>Shop with Shay</h1><p>Your Independent Perfectly Posh Advocate</p></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="alerts.html">Sale Alerts</a>
+    <a href="about.html">About Shay</a>
+  </nav>
+</header>
+
+<div class="section" style="max-width:660px;">
+  <h3>Get Sale Alerts from Shay</h3>
+  <p style="text-align:center;color:#c2477b;margin-bottom:30px;">Pick the Posh products you love. Shay will personally email you the moment they go on sale.</p>
+
+  <form id="alertForm">
+    <div class="form-group">
+      <label for="email">Your Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@email.com" required/>
+    </div>
+    <div class="form-group">
+      <label>Products You Want to Watch</label>
+      <div class="checkbox-grid">
+        <label><input type="checkbox" name="products[]" value="Bee Calm and Carry On Hand Creme"/> Bee Calm Hand Creme</label>
+        <label><input type="checkbox" name="products[]" value="Fantasea Hand Creme"/> Fantasea Hand Creme</label>
+        <label><input type="checkbox" name="products[]" value="Down and Dirty Scrub"/> Down &amp; Dirty Scrub</label>
+        <label><input type="checkbox" name="products[]" value="Overnight Success Mask"/> Overnight Success Mask</label>
+        <label><input type="checkbox" name="products[]" value="Stripper Mask"/> Stripper Mask</label>
+        <label><input type="checkbox" name="products[]" value="Sooo Cuke Balancing Face Oil"/> Sooo Cuke Face Oil</label>
+        <label><input type="checkbox" name="products[]" value="Salty Dog Scrub"/> Salty Dog Scrub</label>
+        <label><input type="checkbox" name="products[]" value="Snarky Bar Scrub Bar"/> Snarky Bar</label>
+        <label><input type="checkbox" name="products[]" value="Bee You Bee Kind Bath Bar"/> Bee You Bath Bar</label>
+        <label><input type="checkbox" name="products[]" value="BFF Body Wash"/> BFF Body Wash</label>
+      </div>
+    </div>
+    <button class="btn" type="submit" style="width:100%;font-size:1rem;">Alert Me When They're On Sale!</button>
+    <div id="response"></div>
+  </form>
+
+  <div style="text-align:center;margin-top:30px;">
+    <p style="margin-bottom:12px;">Ready to shop now?</p>
+    <a class="btn" href="https://perfectlyposh.com/shayhewitt" target="_blank">Visit Shay's Posh Store</a>
+  </div>
+
+  <small class="disclaimer">This is the personal site of Shay Hewitt, an Independent Perfectly Posh Advocate. Your email is used only to notify you of Posh sales and will never be sold or shared.</small>
+</div>
+
+<footer>
+  <p>This is the personal website of Shay Hewitt, an Independent Perfectly Posh Advocate. Not owned or operated by Perfectly Posh.</p>
+  <p style="margin-top:6px;"><a href="https://perfectlyposh.com/shayhewitt" target="_blank">perfectlyposh.com/shayhewitt</a></p>
+</footer>
+
+<script>
+  document.getElementById('alertForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const res  = await fetch('sale-alert.php', {method:'POST', body:data});
+    const json = await res.json();
+    const el   = document.getElementById('response');
+    el.textContent = json.message;
+    el.style.color = json.success ? '#2e7d32' : '#c62828';
+    if(json.success) e.target.reset();
+  });
+</script>
+</body>
+</html>

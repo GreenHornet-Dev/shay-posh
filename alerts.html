@@ -21,11 +21,49 @@
   <h3>Get Sale Alerts from Shay</h3>
   <p style="text-align:center;color:#c2477b;margin-bottom:30px;">Pick the Posh products you love. Shay will personally email you the moment they go on sale.</p>
 
+  <!--
+  =======================================================
+  SETUP NOTES FOR SHAY (read before going live)
+  =======================================================
+
+  OPTION A – Self-Hosted PHP (RECOMMENDED – already wired up below)
+  -----------------------------------------------------------------
+  This form submits to sale-alert.php which:
+    1. Emails you at shayitwithposh@mail.com when someone signs up
+    2. Emails the customer a confirmation
+    3. Logs every signup to data/sale_alerts.csv
+    4. You can download that CSV anytime at:
+       https://YOURDOMAIN.com/download-alerts.php?key=PoshRocks2026
+
+  To go live with Option A:
+    1. Upload ALL files to a PHP-enabled host (Hostinger, SiteGround, etc.)
+    2. In sale-alert.php, change "yourdomain.com" to your real domain
+    3. Make sure the data/ folder is writable: chmod 755 data/
+    4. Optionally change the CSV download password in download-alerts.php
+
+  OPTION B – Formspree (no server needed, free tier = 50 submissions/mo)
+  -----------------------------------------------------------------------
+  1. Go to https://formspree.io and create a free account
+  2. Create a new form – set notification email to shayitwithposh@mail.com
+  3. Copy your Form ID (looks like: xpwzabcd)
+  4. Replace the form tag below:
+       <form id="alertForm">
+     with:
+       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+  5. Remove the <script> block at the bottom of this file (Formspree handles submission)
+  6. Optionally add: <input type="hidden" name="_subject" value="New Posh Sale Alert Signup!"/>
+
+  NOTE: With Formspree you do NOT get the CSV log or the customer confirmation email
+  unless you upgrade. Option A gives you both for free on any PHP host.
+  =======================================================
+  -->
+
   <form id="alertForm">
     <div class="form-group">
       <label for="email">Your Email Address</label>
       <input type="email" id="email" name="email" placeholder="you@email.com" required/>
     </div>
+
     <div class="form-group">
       <label>Products You Want to Watch</label>
       <div class="checkbox-grid">
@@ -41,6 +79,7 @@
         <label><input type="checkbox" name="products[]" value="BFF Body Wash"/> BFF Body Wash</label>
       </div>
     </div>
+
     <button class="btn" type="submit" style="width:100%;font-size:1rem;">Alert Me When They're On Sale!</button>
     <div id="response"></div>
   </form>
@@ -59,14 +98,16 @@
 </footer>
 
 <script>
+  // This script handles form submission to sale-alert.php (Option A).
+  // If you switch to Formspree (Option B), delete this entire <script> block.
   document.getElementById('alertForm').addEventListener('submit', async function(e){
     e.preventDefault();
     const data = new FormData(e.target);
     const res  = await fetch('sale-alert.php', {method:'POST', body:data});
     const json = await res.json();
     const el   = document.getElementById('response');
-    el.textContent = json.message;
-    el.style.color = json.success ? '#2e7d32' : '#c62828';
+    el.textContent  = json.message;
+    el.style.color  = json.success ? '#2e7d32' : '#c62828';
     if(json.success) e.target.reset();
   });
 </script>

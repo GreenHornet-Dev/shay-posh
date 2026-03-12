@@ -1,0 +1,13 @@
+# Never commit customer CSV data
+data/sale_alerts.csv
+
+# Never commit PHP config if split out
+config.php
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/

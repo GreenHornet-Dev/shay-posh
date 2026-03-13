@@ -111,6 +111,13 @@ a.badge-link {
   transform: translateZ(0);
   image-rendering: -webkit-optimize-contrast;
   transition: transform 0.2s;
+    box-shadow:
+    0 0 0 3px #e8587a,
+    0 0 0 5px #f6c90e,
+    0 0 0 7px #3bb2ac,
+    0 0 0 9px #b794f4,
+    0 0 0 11px #81e6c8,
+    0 0 0 13px #e8587a;
 }
 a.badge-link:hover .advocate-badge {
   transform: translateZ(0) scale(1.04);

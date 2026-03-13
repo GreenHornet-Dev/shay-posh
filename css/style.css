@@ -33,11 +33,12 @@ h1, h2, h3, h4, h5, h6 { color: var(--posh-pink); }
 a { color: var(--posh-teal); text-decoration: none; }
 a:hover { color: var(--posh-pink); }
 
-/* === Header (Posh gradient: pink + teal) === */
+/* === Header: 3x taller, pink-to-teal gradient === */
 header {
   background: linear-gradient(90deg, var(--posh-pink) 0%, var(--posh-teal) 100%);
   color: #fff;
-  padding: 12px 30px;
+  padding: 18px 30px;
+  min-height: 120px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,21 +50,36 @@ header {
 .logo-area {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
-/* Advocate Badge SVG */
+/* Advocate badge image slot — clean circle, no jagged edges */
 .advocate-badge {
   flex-shrink: 0;
-  width: 72px;
-  height: 72px;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #fff;
+  padding: 6px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+  /* Clean crisp edges */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  display: block;
+}
+
+/* SVG fallback badge — same size */
+svg.advocate-badge {
+  background: transparent;
+  padding: 0;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.2));
 }
 
 /* Logo text next to badge */
 .logo-text h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+  font-size: 1.9rem;
   font-weight: 700;
   color: #fff;
   line-height: 1.2;
@@ -71,23 +87,23 @@ header {
   margin: 0;
 }
 .logo-text p {
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: rgba(255,255,255,0.92);
   text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  margin: 2px 0 0 0;
+  margin: 4px 0 0 0;
   letter-spacing: 0.3px;
 }
 
 /* Nav */
 nav {
   display: flex;
-  gap: 18px;
+  gap: 22px;
   flex-wrap: wrap;
 }
 nav a {
   color: #fff;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-shadow: 0 1px 3px rgba(0,0,0,0.2);
   transition: opacity 0.2s;
 }
@@ -225,13 +241,14 @@ footer a { color: var(--posh-pink); }
     flex-direction: column;
     align-items: flex-start;
     padding: 14px 16px;
-    gap: 8px;
+    min-height: auto;
+    gap: 10px;
   }
-  .logo-area { gap: 10px; }
-  .advocate-badge { width: 56px; height: 56px; }
-  .logo-text h1 { font-size: 1.05rem; }
-  .logo-text p { font-size: 0.68rem; }
-  nav { gap: 12px; }
+  .advocate-badge { width: 90px; height: 90px; }
+  .logo-text h1 { font-size: 1.2rem; }
+  .logo-text p { font-size: 0.78rem; }
+  nav { gap: 14px; }
+  nav a { font-size: 0.88rem; }
   .hero h2 { font-size: 1.8rem; }
   .hero { padding: 50px 16px 40px; }
 }

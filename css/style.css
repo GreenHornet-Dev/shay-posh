@@ -71,12 +71,14 @@ header {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7), 0 0 8px rgba(0,0,0,0.4);
   margin: 0;
   line-height: 1.2;
 }
 
 .logo-text p {
   color: rgba(255,255,255,0.9);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   font-size: 0.82rem;
   margin: 2px 0 0;
 }

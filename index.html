@@ -6,45 +6,61 @@
   <title>Shop with Shay — Perfectly Posh</title>
   <link rel="stylesheet" href="css/style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* Clean image badge slot */
+    .advocate-badge {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: #fff;
+      padding: 6px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+      display: block;
+      flex-shrink: 0;
+      /* Crisp clean edges - no blur */
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      image-rendering: -webkit-optimize-contrast;
+    }
+  </style>
 </head>
 <body>
 
 <header>
   <div class="logo-area">
-    <!-- Advocate Badge Logo SVG -->
-    <svg class="advocate-badge" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <!-- Replace src with your Perfectly Posh Advocate logo image -->
+    <img
+      class="advocate-badge"
+      src="images/posh-advocate-logo.png"
+      alt="Perfectly Posh Advocate"
+      onerror="this.style.display='none'; document.getElementById('badge-fallback').style.display='block';"
+    />
+    <!-- SVG fallback shown if image not yet uploaded -->
+    <svg id="badge-fallback" class="advocate-badge" width="180" height="180" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="display:none; background:transparent; padding:0; box-shadow:none;">
       <defs>
-        <!-- Bold pink-to-teal gradient ring -->
         <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" style="stop-color:#e8004a;stop-opacity:1" />
           <stop offset="50%" style="stop-color:#b794f4;stop-opacity:1" />
           <stop offset="100%" style="stop-color:#3bb2ac;stop-opacity:1" />
         </linearGradient>
-        <!-- Inner badge gradient -->
         <linearGradient id="innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" style="stop-color:#fce4ec;stop-opacity:1" />
           <stop offset="100%" style="stop-color:#e8f8f5;stop-opacity:1" />
         </linearGradient>
-        <!-- Ribbon gradient -->
         <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:#e8004a;stop-opacity:1" />
           <stop offset="100%" style="stop-color:#3bb2ac;stop-opacity:1" />
         </linearGradient>
       </defs>
-      <!-- THICK outer ring - teal to pink gradient -->
       <circle cx="40" cy="38" r="37" fill="url(#ringGrad)" />
-      <!-- Slightly smaller white spacer ring -->
       <circle cx="40" cy="38" r="31" fill="#fff" />
-      <!-- Inner badge fill -->
       <circle cx="40" cy="38" r="28" fill="url(#innerGrad)" />
-      <!-- SP monogram -->
       <text x="40" y="34" font-family="Playfair Display, serif" font-size="16" font-weight="700" fill="#e8004a" text-anchor="middle" dominant-baseline="middle">SP</text>
-      <!-- Advocate text -->
       <text x="40" y="48" font-family="Lato, sans-serif" font-size="6" font-weight="700" fill="#3bb2ac" text-anchor="middle" letter-spacing="1.2">ADVOCATE</text>
-      <!-- Bottom ribbon -->
       <rect x="12" y="68" width="56" height="10" rx="5" fill="url(#ribbonGrad)" />
       <text x="40" y="75" font-family="Lato, sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.5">PERFECTLY POSH</text>
-      <!-- Gold star at top -->
       <polygon points="40,2 41.8,7.5 47.5,7.5 43,11 44.8,16.5 40,13 35.2,16.5 37,11 32.5,7.5 38.2,7.5" fill="#f9c950" />
     </svg>
     <div class="logo-text">

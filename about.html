@@ -5,24 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Shay – Shop with Shay</title>
   <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     .about-wrap { max-width:720px; margin:auto; padding:50px 20px; }
-    .about-wrap h2 { color:#e8587a; font-size:2rem; margin-bottom:16px; text-align:center; }
-    .about-wrap p { color:#c2477b; line-height:1.85; font-size:1rem; margin-bottom:18px; }
+    .about-wrap h2 { color: var(--posh-pink); font-size:2rem; margin-bottom:16px; text-align:center; font-family: 'Playfair Display', serif; }
+    .about-wrap p { color: #555; line-height:1.85; font-size:1rem; margin-bottom:18px; }
     .highlights { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin:30px 0; }
-    .highlight-box { background:#fce4ec; border-radius:12px; padding:20px; text-align:center; border-top:4px solid #e8587a; }
+    .highlight-box { background:#fff; border:2px solid var(--posh-mint); border-radius:12px; padding:20px; text-align:center; border-top:4px solid var(--posh-teal); transition: all 0.2s; }
+    .highlight-box:hover { border-color: var(--posh-lavender); transform: translateY(-3px); box-shadow: 0 4px 15px rgba(129,230,200,0.2); }
     .highlight-box .icon { font-size:2rem; margin-bottom:8px; }
-    .highlight-box h4 { color:#e8587a; margin-bottom:6px; }
-    .highlight-box p { color:#c2477b; font-size:0.88rem; margin:0; }
-    .cta-block { background:linear-gradient(to right,#fce4ec,#f8bbd0); border-radius:14px; padding:30px; text-align:center; margin-top:40px; }
-    .cta-block h3 { color:#e8587a; margin-bottom:12px; }
-    .cta-block p { color:#c2477b; margin-bottom:20px; }
+    .highlight-box h4 { color: var(--posh-teal); margin-bottom:6px; }
+    .highlight-box p { color: #555; font-size:0.88rem; margin:0; }
+    .cta-block { background: linear-gradient(135deg, var(--posh-pink-light), var(--posh-gold)); border-radius:14px; padding:30px; text-align:center; margin-top:40px; }
+    .cta-block h3 { color: var(--posh-pink); margin-bottom:12px; font-family: 'Playfair Display', serif; }
+    .cta-block p { color: #555; margin-bottom:20px; }
     .cta-block .btn { margin:6px; }
   </style>
 </head>
 <body>
+
 <header>
-  <div><h1>Shop with Shay</h1><p>Your Independent Perfectly Posh Advocate</p></div>
+  <div class="logo-area">
+    <div class="logo-circle">SP</div>
+    <div class="logo-text">
+      <h1>Shop with Shay</h1>
+      <p>Your Independent Perfectly Posh Advocate</p>
+    </div>
+  </div>
   <nav>
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
@@ -39,22 +48,22 @@
 
   <div class="highlights">
     <div class="highlight-box">
-      <div class="icon">&#127800;</div>
+      <div class="icon">🌸</div>
       <h4>Good Ingredients</h4>
       <p>No junk, just skin-loving ingredients you can feel good about every day.</p>
     </div>
     <div class="highlight-box">
-      <div class="icon">&#10024;</div>
+      <div class="icon">✨</div>
       <h4>Real Results</h4>
       <p>Soft hands, glowing skin, and a mood boost — these products genuinely deliver.</p>
     </div>
     <div class="highlight-box">
-      <div class="icon">&#128140;</div>
+      <div class="icon">💌</div>
       <h4>Personal Touch</h4>
       <p>Sign up for sale alerts and I'll personally email you when your faves drop in price.</p>
     </div>
     <div class="highlight-box">
-      <div class="icon">&#128717;</div>
+      <div class="icon">🛑</div>
       <h4>Easy Shopping</h4>
       <p>Every product link on this site goes straight to my official Posh storefront.</p>
     </div>
@@ -69,7 +78,7 @@
     <a class="btn outline" href="alerts.html">Get Sale Alerts</a>
   </div>
 
-  <small class="disclaimer" style="text-align:center;display:block;">
+  <small class="disclaimer" style="text-align:center;display:block;margin-top:20px;">
     This is the personal website of Shay Hewitt, an Independent Perfectly Posh Advocate. Not owned or operated by Perfectly Posh.
   </small>
 </div>
@@ -78,5 +87,6 @@
   <p>This is the personal website of Shay Hewitt, an Independent Perfectly Posh Advocate. Not owned or operated by Perfectly Posh.</p>
   <p style="margin-top:6px;"><a href="https://perfectlyposh.com/shayhewitt" target="_blank">perfectlyposh.com/shayhewitt</a></p>
 </footer>
+
 </body>
 </html>

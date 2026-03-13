@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Shay – Shop with Shay</title>
+  <title>About Shay — Shop with Shay</title>
   <link rel="stylesheet" href="css/style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     .about-wrap { max-width:720px; margin:auto; padding:50px 20px; }
     .about-wrap h2 { color: var(--posh-pink); font-size:2rem; margin-bottom:16px; text-align:center; font-family: 'Playfair Display', serif; }
     .about-wrap p { color: #555; line-height:1.85; font-size:1rem; margin-bottom:18px; }
+    .about-wrap .tagline { font-size:1.15rem; color: var(--posh-teal); font-weight:700; text-align:center; margin-bottom:30px; }
     .highlights { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; margin:30px 0; }
     .highlight-box { background:#fff; border:2px solid var(--posh-mint); border-radius:12px; padding:20px; text-align:center; border-top:4px solid var(--posh-teal); transition: all 0.2s; }
     .highlight-box:hover { border-color: var(--posh-lavender); transform: translateY(-3px); box-shadow: 0 4px 15px rgba(129,230,200,0.2); }
@@ -26,9 +27,33 @@
 
 <header>
   <div class="logo-area">
-    <div class="logo-circle">SP</div>
+    <svg class="advocate-badge" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#e8004a;stop-opacity:1" />
+          <stop offset="50%" style="stop-color:#b794f4;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#3bb2ac;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#fce4ec;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#e8f8f5;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#e8004a;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#3bb2ac;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <circle cx="40" cy="38" r="37" fill="url(#ringGrad)" />
+      <circle cx="40" cy="38" r="31" fill="#fff" />
+      <circle cx="40" cy="38" r="28" fill="url(#innerGrad)" />
+      <text x="40" y="34" font-family="Playfair Display, serif" font-size="16" font-weight="700" fill="#e8004a" text-anchor="middle" dominant-baseline="middle">SP</text>
+      <text x="40" y="48" font-family="Lato, sans-serif" font-size="6" font-weight="700" fill="#3bb2ac" text-anchor="middle" letter-spacing="1.2">ADVOCATE</text>
+      <rect x="12" y="68" width="56" height="10" rx="5" fill="url(#ribbonGrad)" />
+      <text x="40" y="75" font-family="Lato, sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.5">PERFECTLY POSH</text>
+      <polygon points="40,2 41.8,7.5 47.5,7.5 43,11 44.8,16.5 40,13 35.2,16.5 37,11 32.5,7.5 38.2,7.5" fill="#f9c950" />
+    </svg>
     <div class="logo-text">
-      <h1>Shop with Shay</h1>
+      <h1>✨ Shop with Shay</h1>
       <p>Your Independent Perfectly Posh Advocate</p>
     </div>
   </div>
@@ -41,51 +66,49 @@
 </header>
 
 <div class="about-wrap">
-  <h2>Hi, I'm Shay!</h2>
-  <p>I'm Shay Hewitt — a self-care lover, Perfectly Posh advocate, and your go-to person for all things good, clean, and fun. I discovered Posh because I was looking for products that actually worked, smelled amazing, and didn't come with a scary ingredient list.</p>
-  <p>From the moment I tried my first hand creme I was hooked. Now I share my favorites with anyone who will listen — friends, family, and anyone who stumbles across this little corner of the internet.</p>
-  <p>When you shop through my Posh link, you get the exact same great products and prices as the main site — and you support a real person who genuinely loves what she sells.</p>
+  <h2>🏅 Meet Shay!</h2>
+  <p class="tagline">✨ Graphic designer by passion. Perfectly Posh advocate by choice. ✨</p>
+
+  <p>Hi, I'm Shay Hewitt! I've spent years with a creative eye — graphic design has been a huge part of my life, shaping how I see color, beauty, and the little details that make something truly special. That love of design carried right over when I discovered Perfectly Posh.</p>
+
+  <p>Posh caught my attention because the products are as beautifully crafted as they are effective — good, clean ingredients, gorgeous scents, and real results. From the moment I tried my first hand creme I was hooked! Now I get to combine two things I love: sharing great self-care finds and bringing a little creativity to everything I do.</p>
+
+  <p>I share my Posh favorites with friends, family, and anyone who stumbles across this little corner of the internet. When you shop through my link you get the exact same great products and prices as the main site — and you support a real person who genuinely loves what she sells. 💕</p>
 
   <div class="highlights">
     <div class="highlight-box">
-      <div class="icon">🌸</div>
+      <div class="icon">🎨</div>
+      <h4>Design Background</h4>
+      <p>Graphic design lover with an eye for color, beauty, and creative detail.</p>
+    </div>
+    <div class="highlight-box">
+      <div class="icon">🌿</div>
       <h4>Good Ingredients</h4>
-      <p>No junk, just skin-loving ingredients you can feel good about every day.</p>
+      <p>Only fun, clean, skin-loving ingredients you can feel good about every day.</p>
     </div>
     <div class="highlight-box">
-      <div class="icon">✨</div>
-      <h4>Real Results</h4>
-      <p>Soft hands, glowing skin, and a mood boost — these products genuinely deliver.</p>
+      <div class="icon">💜</div>
+      <h4>Real Advocate</h4>
+      <p>Independent Posh advocate — not a big corporation, just Shay sharing what she loves.</p>
     </div>
     <div class="highlight-box">
-      <div class="icon">💌</div>
-      <h4>Personal Touch</h4>
-      <p>Sign up for sale alerts and I'll personally email you when your faves drop in price.</p>
-    </div>
-    <div class="highlight-box">
-      <div class="icon">🛑</div>
-      <h4>Easy Shopping</h4>
-      <p>Every product link on this site goes straight to my official Posh storefront.</p>
+      <div class="icon">💰</div>
+      <h4>Same Great Prices</h4>
+      <p>Shop through my link for the exact same products and pricing as perfectlyposh.com.</p>
     </div>
   </div>
-
-  <p>Have a question about a product? Not sure which scrub is right for your skin type? Just want to chat self-care? Reach out any time — I love connecting with people who take care of themselves.</p>
 
   <div class="cta-block">
-    <h3>Ready to treat yourself?</h3>
-    <p>Browse all Posh products through Shay's store, or sign up for sale alerts on your favorites.</p>
-    <a class="btn" href="https://perfectlyposh.com/shayhewitt" target="_blank">Shop Shay's Posh Store</a>
-    <a class="btn outline" href="alerts.html">Get Sale Alerts</a>
+    <h3>🛍️ Ready to Treat Yourself?</h3>
+    <p>Browse the full Perfectly Posh collection through Shay's official store link!</p>
+    <a class="btn flashy cta" href="https://perfectlyposh.com/shaymatt" target="_blank">🛒 Shop Shay's Posh Store</a>
+    <a class="btn outline" href="alerts.html">🔔 Get Sale Alerts</a>
   </div>
-
-  <small class="disclaimer" style="text-align:center;display:block;margin-top:20px;">
-    This is the personal website of Shay Hewitt, an Independent Perfectly Posh Advocate. Not owned or operated by Perfectly Posh.
-  </small>
 </div>
 
 <footer>
-  <p>This is the personal website of Shay Hewitt, an Independent Perfectly Posh Advocate. Not owned or operated by Perfectly Posh.</p>
-  <p style="margin-top:6px;"><a href="https://perfectlyposh.com/shayhewitt" target="_blank">perfectlyposh.com/shayhewitt</a></p>
+  <p>&copy; 2025 Shop with Shay. Proudly representing Perfectly Posh products.</p>
+  <p>Questions? <a href="mailto:contact@shayposh.com">contact@shayposh.com</a></p>
 </footer>
 
 </body>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shay's Posh Blog — Beauty Tips & Self-Care</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Lato:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── Logo ring wrapper ── */
+    .badge-ring-wrap {
+      position: relative;
+      width: 196px;
+      height: 196px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .badge-ring-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(
+        #e8587a 0deg,
+        #f6c90e 60deg,
+        #3bb2ac 120deg,
+        #b794f4 180deg,
+        #81e6c8 240deg,
+        #e8587a 300deg,
+        #e8587a 360deg
+      );
+      z-index: 0;
+    }
+    .badge-ring-wrap::after {
+      content: '★';
+      position: absolute;
+      top: -6px;
+      right: -2px;
+      font-size: 28px;
+      color: #f6c90e;
+      text-shadow: 0 0 6px rgba(0,0,0,0.35);
+      z-index: 3;
+      line-height: 1;
+    }
+    .advocate-badge {
+      position: absolute;
+      inset: 8px;
+      width: calc(100% - 16px);
+      height: calc(100% - 16px);
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      display: block;
+      z-index: 1;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      image-rendering: -webkit-optimize-contrast;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    a.badge-link {
+      display: block;
+      flex-shrink: 0;
+      line-height: 0;
+      text-decoration: none;
+    }
+    a.badge-link:hover .advocate-badge { transform: translateZ(0) scale(1.04); }
+    a.badge-link:hover .badge-ring-wrap::before { filter: brightness(1.1); }
+
+    /* ── Blog-specific styles ── */
+    .blog-hero {
+      background: linear-gradient(135deg, #fce4ec 0%, #e0f7f4 60%, #ede7f6 100%);
+      text-align: center;
+      padding: 60px 20px 50px;
+    }
+    .blog-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--posh-pink, #c2185b);
+      margin-bottom: 12px;
+    }
+    .blog-hero p {
+      font-size: 1.05rem;
+      color: #555;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .blog-section {
+      max-width: 1060px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--posh-pink, #c2185b);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .blog-card {
+      border: 1px solid #f0d6e8;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 3px 14px rgba(194,24,91,0.07);
+      transition: transform .2s, box-shadow .2s;
+      background: #fff;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(194,24,91,0.13);
+    }
+    .card-img {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, #f9a8c9, #5bbfb5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+    .card-body { padding: 20px; }
+    .card-tag {
+      display: inline-block;
+      background: #fce4ec;
+      color: #c2185b;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 20px;
+      padding: 3px 10px;
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: #333;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .card-excerpt { font-size: 0.88rem; color: #666; line-height: 1.6; margin-bottom: 16px; }
+    .card-meta { font-size: 0.78rem; color: #aaa; margin-bottom: 14px; }
+    .btn-read {
+      display: inline-block;
+      background: linear-gradient(135deg, #e91e8c, #5bbfb5);
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .btn-read:hover { opacity: 0.85; }
+    @media (max-width: 600px) {
+      .blog-hero h1 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-area">
+      <a class="badge-link" href="https://perfectlyposh.com/shayhewitt" target="_blank" title="Shop Shay's Perfectly Posh Store">
+        <div class="badge-ring-wrap">
+          <img
+            class="advocate-badge"
+            src="images/shppa.jpg"
+            alt="Perfectly Posh Advocate"
+            onerror="this.style.display='none'; document.getElementById('badge-fallback').style.display='block';"
+          />
+        </div>
+      </a>
+      <div class="logo-text">
+        <h1>✨ Shop with Shay</h1>
+        <p>Your Independent Perfectly Posh Advocate</p>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="alerts.html">Sale Alerts</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="about.html">About Shay</a>
+    </nav>
+  </header>
+
+  <section class="blog-hero">
+    <h1>✨ Shay's Posh Blog 🌸</h1>
+    <p>Beauty tips, self-care inspiration, and all things Perfectly Posh — straight from Shay's heart to yours.</p>
+  </section>
+
+  <section class="blog-section">
+    <h2 class="section-heading">Latest Posts</h2>
+    <div class="blog-grid">
+
+      <div class="blog-card">
+        <div class="card-img">🧴</div>
+        <div class="card-body">
+          <span class="card-tag">Skincare Tips</span>
+          <h3 class="card-title">5 Ways to Level Up Your Nighttime Skincare Routine</h3>
+          <p class="card-excerpt">Your skin does its best repair work while you sleep. Here are five easy swaps to make your nighttime routine truly work for you.</p>
+          <div class="card-meta">💕 By Shay Hewitt &nbsp;|&nbsp; March 2026</div>
+          <a href="#" class="btn-read">Read More 💕</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="card-img">🛁</div>
+        <div class="card-body">
+          <span class="card-tag">Self-Care</span>
+          <h3 class="card-title">How to Create a Spa Day at Home (for Under $30)</h3>
+          <p class="card-excerpt">You don't need a fancy spa to feel luxurious. With a few Posh favorites and these simple steps, your bathroom becomes your sanctuary.</p>
+          <div class="card-meta">💕 By Shay Hewitt &nbsp;|&nbsp; February 2026</div>
+          <a href="#" class="btn-read">Read More 💕</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="card-img">🌿</div>
+        <div class="card-body">
+          <span class="card-tag">Ingredients</span>
+          <h3 class="card-title">Why Natural Ingredients Actually Matter in Skincare</h3>
+          <p class="card-excerpt">Not all "natural" claims are equal. Here's what to look for on labels and why Perfectly Posh's ingredient list stands out.</p>
+          <div class="card-meta">💕 By Shay Hewitt &nbsp;|&nbsp; January 2026</div>
+          <a href="#" class="btn-read">Read More 💕</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="card-img">🎁</div>
+        <div class="card-body">
+          <span class="card-tag">Gift Guides</span>
+          <h3 class="card-title">The Ultimate Posh Gift Guide for Every Budget</h3>
+          <p class="card-excerpt">Whether you're shopping for a best friend, mom, or yourself — there's a perfect Posh bundle for everyone on your list.</p>
+          <div class="card-meta">💕 By Shay Hewitt &nbsp;|&nbsp; December 2025</div>
+          <a href="#" class="btn-read">Read More 💕</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="card-img">💜</div>
+        <div class="card-body">
+          <span class="card-tag">Cruelty-Free</span>
+          <h3 class="card-title">What "Cruelty-Free" Really Means — and Why It Matters</h3>
+          <p class="card-excerpt">Perfectly Posh has always been committed to cruelty-free beauty. Here's what that means and how to spot the real deal.</p>
+          <div class="card-meta">💕 By Shay Hewitt &nbsp;|&nbsp; November 2025</div>
+          <a href="#" class="btn-read">Read More 💕</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="card-img">✨</div>
+        <div class="card-body">
+          <span class="card-tag">Favorites</span>
+          <h3 class="card-title">Shay's Top 5 Perfectly Posh Products Right Now</h3>
+          <p class="card-excerpt">These are the products I reach for every single day. If you're new to Posh or just looking for your next obsession — start here.</p>
+          <div class="card-meta">💕 By Shay Hewitt &nbsp;|&nbsp; October 2025</div>
+          <a href="#" class="btn-read">Read More 💕</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>🌺 Ready to Go Posh? 🌺</h2>
+    <p>Shop Shay's store and treat yourself to something luxurious today.</p>
+    <a href="alerts.html" class="btn btn-outline">Get Sale Alerts 🔔</a>
+    <a href="https://perfectlyposh.com/shayhewitt" class="btn">Visit Shay's Shop 💕</a>
+  </section>
+
+  <footer>
+    <p>💕 Shop with Shay — Your Perfectly Posh Advocate</p>
+    <p><a href="https://perfectlyposh.com/shayhewitt">perfectlyposh.com/shayhewitt</a></p>
+    <p>Independent Perfectly Posh Advocate. Not an employee of Perfectly Posh.</p>
+  </footer>
+
+</body>
+</html>

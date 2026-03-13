@@ -1,19 +1,39 @@
+/* ═══════════════════════════════════════════════════════
+   Perfectly Posh Brand Colors
+   ═══════════════════════════════════════════════════════
+   Primary: Hot Pink #e8587a
+   Secondary: Teal #38b2ac  
+   Accent 1: Gold/Yellow #f6c90e
+   Accent 2: Lavender #b794f4
+   Accent 3: Mint #81e6c8
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  --posh-pink: #e8587a;
+  --posh-teal: #38b2ac;
+  --posh-gold: #f6c90e;
+  --posh-lavender: #b794f4;
+  --posh-mint: #81e6c8;
+  --posh-pink-light: #fce4ec;
+  --posh-pink-dark: #c2477b;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: 'Lato', 'Georgia', serif;
-  background: #fff8fb;
-  color: #c2477b;
+  background: #fff;
+  color: #555;
 }
 
-p, li, small, td, th { color: #c2477b; }
-h1, h2, h3, h4, h5, h6 { color: #e8587a; }
-a { color: #c2477b; text-decoration: none; }
-a:hover { color: #a33568; }
+p, li, small, td, th { color: #555; }
+h1, h2, h3, h4, h5, h6 { color: var(--posh-pink); }
+a { color: var(--posh-teal); text-decoration: none; }
+a:hover { color: var(--posh-pink); }
 
-/* ── Header ── */
+/* ── Header (Posh gradient: pink → teal) ── */
 header {
-  background: linear-gradient(135deg, #e8587a, #c2477b);
+  background: linear-gradient(90deg, var(--posh-pink) 0%, var(--posh-teal) 100%);
   color: #fff;
   padding: 16px 30px;
   display: flex;
@@ -35,7 +55,7 @@ header {
   height: 54px;
   border-radius: 50%;
   background: #fff;
-  color: #e8587a;
+  color: var(--posh-pink);
   font-family: 'Playfair Display', serif;
   font-size: 1.3rem;
   font-weight: 700;
@@ -56,7 +76,7 @@ header {
 }
 
 .logo-text p {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.9);
   font-size: 0.82rem;
   margin: 2px 0 0;
 }
@@ -68,11 +88,11 @@ nav a {
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
 }
-nav a:hover { border-color: #fff; }
+nav a:hover { border-color: var(--posh-gold); }
 
 /* ── Hero ── */
 .hero {
-  background: linear-gradient(to right, #fce4ec, #f8bbd0);
+  background: linear-gradient(135deg, var(--posh-pink-light) 0%, var(--posh-mint) 100%);
   text-align: center;
   padding: 70px 20px 60px;
 }
@@ -80,7 +100,7 @@ nav a:hover { border-color: #fff; }
 .hero-badge {
   display: inline-block;
   background: #fff;
-  color: #e8587a;
+  color: var(--posh-teal);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -88,36 +108,53 @@ nav a:hover { border-color: #fff; }
   padding: 6px 18px;
   border-radius: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(232,88,122,0.15);
+  box-shadow: 0 2px 8px rgba(56,178,172,0.2);
 }
 
-.hero h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: #e8587a; margin-bottom: 14px; }
-.hero p { font-size: 1.1rem; color: #c2477b; max-width: 560px; margin: 0 auto 28px; }
+.hero h2 { 
+  font-family: 'Playfair Display', serif; 
+  font-size: 2.4rem; 
+  color: var(--posh-pink); 
+  margin-bottom: 14px; 
+}
+.hero p { 
+  font-size: 1.1rem; 
+  color: #555; 
+  max-width: 560px; 
+  margin: 0 auto 28px; 
+}
 
 .hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
 /* ── Buttons ── */
 .btn {
   display: inline-block;
-  background: #c2477b;
+  background: var(--posh-teal);
   color: #fff !important;
   padding: 14px 32px;
   border-radius: 30px;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 700;
-  transition: background 0.2s, transform 0.15s;
-  box-shadow: 0 3px 10px rgba(194,71,123,0.25);
+  transition: all 0.2s;
+  box-shadow: 0 3px 10px rgba(56,178,172,0.25);
 }
-.btn:hover { background: #a33568; transform: translateY(-2px); }
+.btn:hover { 
+  background: var(--posh-pink); 
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(232,88,122,0.3);
+}
 
 .btn.outline {
   background: transparent;
-  border: 2px solid #c2477b;
-  color: #c2477b !important;
+  border: 2px solid var(--posh-teal);
+  color: var(--posh-teal) !important;
   box-shadow: none;
 }
-.btn.outline:hover { background: #c2477b; color: #fff !important; }
+.btn.outline:hover { 
+  background: var(--posh-teal); 
+  color: #fff !important; 
+}
 
 /* ── Cards Section ── */
 .section {
@@ -130,7 +167,7 @@ nav a:hover { border-color: #fff; }
   font-family: 'Playfair Display', serif;
   text-align: center;
   font-size: 1.8rem;
-  color: #e8587a;
+  color: var(--posh-pink);
   margin-bottom: 30px;
 }
 
@@ -142,14 +179,18 @@ nav a:hover { border-color: #fff; }
 
 .card {
   background: #fff;
-  border: 1px solid #f8bbd0;
+  border: 2px solid var(--posh-mint);
   border-radius: 14px;
   padding: 26px 20px;
   text-align: center;
-  box-shadow: 0 2px 12px rgba(232,88,122,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(129,230,200,0.15);
+  transition: all 0.2s;
 }
-.card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(232,88,122,0.15); }
+.card:hover { 
+  transform: translateY(-4px); 
+  box-shadow: 0 6px 20px rgba(56,178,172,0.25);
+  border-color: var(--posh-teal);
+}
 
 .card-icon {
   font-size: 2.4rem;
@@ -158,42 +199,53 @@ nav a:hover { border-color: #fff; }
 
 .card h4 {
   font-family: 'Playfair Display', serif;
-  color: #e8587a;
+  color: var(--posh-teal);
   margin-bottom: 10px;
   font-size: 1.15rem;
 }
 
 .card p {
   font-size: 0.9rem;
-  color: #c2477b;
+  color: #666;
   margin-bottom: 18px;
   line-height: 1.5;
 }
 
-/* ── Alert Band ── */
+/* ── Alert Band (pink → gold gradient) ── */
 .alert-band {
-  background: linear-gradient(135deg, #fce4ec, #f48fb1);
+  background: linear-gradient(135deg, var(--posh-pink) 0%, var(--posh-gold) 100%);
   text-align: center;
   padding: 50px 20px;
   margin-top: 10px;
 }
 
 .alert-band h3 {
-  color: #e8587a;
+  color: #fff;
   font-family: 'Playfair Display', serif;
   font-size: 1.6rem;
   margin-bottom: 12px;
 }
 
 .alert-band p {
-  color: #c2477b;
+  color: rgba(255,255,255,0.95);
   margin-bottom: 22px;
   font-size: 1.05rem;
 }
 
+.alert-band .btn {
+  background: #fff;
+  color: var(--posh-pink) !important;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+
+.alert-band .btn:hover {
+  background: var(--posh-lavender);
+  color: #fff !important;
+}
+
 /* ── Footer ── */
 footer {
-  background: #e8587a;
+  background: var(--posh-lavender);
   color: #fff;
   text-align: center;
   padding: 24px 20px;
@@ -201,16 +253,16 @@ footer {
 }
 
 footer p { color: #fff; }
-footer a { color: #fce4ec; }
+footer a { color: var(--posh-mint); }
 footer a:hover { color: #fff; }
 
 /* ── Forms ── */
 form { max-width: 480px; margin: 0 auto; }
-label { display: block; margin-bottom: 6px; color: #c2477b; font-weight: 700; }
+label { display: block; margin-bottom: 6px; color: var(--posh-pink); font-weight: 700; }
 input, select, textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 1.5px solid #f48fb1;
+  border: 2px solid var(--posh-mint);
   border-radius: 8px;
   margin-bottom: 16px;
   font-size: 0.97rem;
@@ -219,8 +271,8 @@ input, select, textarea {
 }
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: #e8587a;
-  box-shadow: 0 0 0 3px rgba(232,88,122,0.12);
+  border-color: var(--posh-teal);
+  box-shadow: 0 0 0 3px rgba(56,178,172,0.15);
 }
 
 /* ── Responsive ── */

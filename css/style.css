@@ -52,8 +52,7 @@ header {
 /* === Multicolor ring wrapper around logo === */
 .badge-ring-wrap {
   position: relative;
-  width: 196px;
-  height: 196px;
+  width: 30px;  height: 196px;
   flex-shrink: 0;
   display: block;
 }

@@ -7,14 +7,13 @@
   <link rel="stylesheet" href="css/style.css"/>
   <style>
     .product-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; margin-top:30px; }
-    .product-card { background:#fff; border-radius:14px; padding:28px 22px; text-align:center; box-shadow:0 4px 18px rgba(194,71,123,0.1); border-top:5px solid #f8bbd0; display:flex; flex-direction:column; gap:10px; }
-    .category-tag { display:inline-block; background:#fce4ec; color:#c2477b; font-size:0.75rem; font-weight:bold; border-radius:20px; padding:4px 12px; text-transform:uppercase; }
-    .product-card h4 { color:#e8587a; font-size:1.1rem; }
-    .product-card p { color:#c2477b; font-size:0.88rem; line-height:1.6; flex-grow:1; }
-    .product-card .actions { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
-    .product-card .actions a { font-size:0.9rem; padding:10px 20px; }
-    .filter-bar { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:10px; }
-    .filter-btn { background:#fce4ec; color:#c2477b; border:2px solid #f8bbd0; border-radius:20px; padding:7px 18px; cursor:pointer; font-size:0.9rem; }
+    .product-card { background:#fff; border-radius:16px; padding:24px 20px; text-align:center; box-shadow:0 2px 12px rgba(232,88,122,0.1); border-top:4px solid #f6c90e; display:flex; flex-direction:column; gap:10px; }
+    .category-tag { display:inline-block; background:#fce4ec; color:#c2477b; font-size:0.75rem; font-weight:bold; border-radius:6px; padding:4px 13px; text-transform:uppercase; }
+    .product-card h4 { color:#e8587a; font-size:1.08rem; line-height:1.3; flex-grow:1; }
+    .product-card p { color:#c2477b; font-size:0.9rem; padding:8px 0; margin-top:8px; margin-bottom:4px; }
+    .product-card .actions { display:flex; flex-direction:column; gap:8px; margin-top:6px; }
+    .filter-bar { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:18px; }
+    .filter-btn { background:#fce4ec; color:#c2477b; border:1px solid #f6c90e; border-radius:20px; padding:7px 18px; cursor:pointer; font-size:0.9rem; }
     .filter-btn:hover, .filter-btn.active { background:#c2477b; color:#fff; border-color:#c2477b; }
     .sale-strip { background:#fce4ec; border-left:4px solid #e8587a; border-radius:8px; padding:14px 20px; text-align:center; margin-bottom:30px; color:#c2477b; }
     .sale-strip a { font-weight:bold; color:#e8587a; }
@@ -22,7 +21,39 @@
 </head>
 <body>
 <header>
-  <div><h1>Shop with Shay</h1><p>Your Independent Perfectly Posh Advocate</p></div>
+  <div class="logo-area">
+    <a class="badge-link" href="https://perfectlyposh.com/shayhewitt" target="_blank" title="Shop Shay's Perfectly Posh Store">
+      <div class="badge-ring-wrap">
+        <img
+          class="advocate-badge"
+          src="images/PoshPA.jpg"
+          alt="Perfectly Posh Advocate"
+          onerror="this.style.display='none'; document.getElementById('badge-fallback').style.display='block';"
+        />
+        <svg id="badge-fallback" class="badge-fallback-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+          <defs>
+            <linearGradient id="innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#fce4ec;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#e8f8f5;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#e8587a;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#3bb2ac;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <circle cx="40" cy="40" r="40" fill="url(#innerGrad)" />
+          <text x="40" y="36" font-family="Playfair Display, serif" font-size="18" font-weight="700" fill="#e8587a" text-anchor="middle" dominant-baseline="middle">SP</text>
+          <text x="40" y="52" font-family="Lato, sans-serif" font-size="6.5" font-weight="700" fill="#3bb2ac" text-anchor="middle" letter-spacing="1.2">ADVOCATE</text>
+          <rect x="10" y="64" width="60" height="11" rx="5.5" fill="url(#ribbonGrad)" />
+          <text x="40" y="71.5" font-family="Lato, sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.5">PERFECTLY POSH</text>
+        </svg>
+      </div>
+    </a>
+    <div class="logo-text">
+      <h1>✨ Shop with Shay</h1>
+      <p>Your Independent Perfectly Posh Advocate</p>
+    </div>
+  </div>
   <nav>
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
@@ -33,14 +64,15 @@
 
 <div class="section">
   <h3>Posh Products</h3>
-  <div class="sale-strip">Want to know when these go on sale? <a href="alerts.html">Sign up for Shay's Sale Alerts &rarr;</a></div>
+  <div class="sale-strip">Want to know when these go on sale? <a href="alerts.html">Sign up for Shay's Sale Alerts →</a></div>
   <div class="filter-bar">
     <button class="filter-btn active" onclick="filterCards('all',this)">All</button>
     <button class="filter-btn" onclick="filterCards('hand',this)">Hand Cremes</button>
-    <button class="filter-btn" onclick="filterCards('face',this)">Face &amp; Skin</button>
+    <button class="filter-btn" onclick="filterCards('face',this)">Face & Skin</button>
     <button class="filter-btn" onclick="filterCards('scrub',this)">Scrubs</button>
-    <button class="filter-btn" onclick="filterCards('bath',this)">Bath &amp; Body</button>
+    <button class="filter-btn" onclick="filterCards('bath',this)">Bath & Body</button>
   </div>
+
   <div class="product-grid" id="productGrid">
     <div class="product-card" data-cat="hand">
       <span class="category-tag">Hand Creme</span>
@@ -51,6 +83,7 @@
         <a class="btn outline" href="alerts.html">Alert Me on Sale</a>
       </div>
     </div>
+
     <div class="product-card" data-cat="hand">
       <span class="category-tag">Hand Creme</span>
       <h4>Fantasea</h4>
@@ -60,6 +93,7 @@
         <a class="btn outline" href="alerts.html">Alert Me on Sale</a>
       </div>
     </div>
+
     <div class="product-card" data-cat="face">
       <span class="category-tag">Face Mask</span>
       <h4>Overnight Success</h4>
@@ -69,6 +103,7 @@
         <a class="btn outline" href="alerts.html">Alert Me on Sale</a>
       </div>
     </div>
+
     <div class="product-card" data-cat="face">
       <span class="category-tag">Face Mask</span>
       <h4>Stripper</h4>
@@ -78,6 +113,7 @@
         <a class="btn outline" href="alerts.html">Alert Me on Sale</a>
       </div>
     </div>
+
     <div class="product-card" data-cat="face">
       <span class="category-tag">Face Oil</span>
       <h4>Sooo Cuke Balancing Face Oil</h4>
@@ -87,15 +123,17 @@
         <a class="btn outline" href="alerts.html">Alert Me on Sale</a>
       </div>
     </div>
+
     <div class="product-card" data-cat="scrub">
       <span class="category-tag">Body Scrub</span>
-      <h4>Down &amp; Dirty</h4>
+      <h4>Down & Dirty</h4>
       <p>A powerhouse exfoliating scrub — buffs away dead skin and leaves you silky smooth. Top seller!</p>
       <div class="actions">
         <a class="btn" href="https://perfectlyposh.com/shayhewitt" target="_blank">Shop via Shay</a>
         <a class="btn outline" href="alerts.html">Alert Me on Sale</a>
       </div>
     </div>
+
     <div class="product-card" data-cat="scrub">
       <span class="category-tag">Body Scrub</span>
       <h4>Salty Dog</h4>
@@ -105,6 +143,7 @@
         <a class="btn outline" href="alerts.html">Alert Me on Sale</a>
       </div>
     </div>
+
     <div class="product-card" data-cat="scrub">
       <span class="category-tag">Scrub Bar</span>
       <h4>Snarky Bar</h4>
@@ -114,6 +153,7 @@
         <a class="btn outline" href="alerts.html">Alert Me on Sale</a>
       </div>
     </div>
+
     <div class="product-card" data-cat="bath">
       <span class="category-tag">Bath Bar</span>
       <h4>Bee You Bee Kind</h4>
@@ -123,6 +163,7 @@
         <a class="btn outline" href="alerts.html">Alert Me on Sale</a>
       </div>
     </div>
+
     <div class="product-card" data-cat="bath">
       <span class="category-tag">Body Wash</span>
       <h4>BFF</h4>
@@ -133,24 +174,30 @@
       </div>
     </div>
   </div>
-  <div style="text-align:center;margin-top:40px;">
-    <p style="margin-bottom:16px;">See Shay's full store for all products, bundles, and new arrivals.</p>
-    <a class="btn" href="https://perfectlyposh.com/shayhewitt" target="_blank">Browse Shay's Full Store</a>
-  </div>
+
+  <p style="text-align:center; margin-top:50px; color:#555;">See Shay's full store for all products, bundles, and new arrivals.</p>
+  <p style="text-align:center;"><a href="https://perfectlyposh.com/shayhewitt" target="_blank" class="btn">Browse Shay's Full Store</a></p>
 </div>
 
 <footer>
   <p>This is the personal website of Shay Hewitt, an Independent Perfectly Posh Advocate. Not owned or operated by Perfectly Posh.</p>
-  <p style="margin-top:6px;"><a href="https://perfectlyposh.com/shayhewitt" target="_blank">perfectlyposh.com/shayhewitt</a></p>
+  <p><a href="https://perfectlyposh.com/shayhewitt" target="_blank">perfectlyposh.com/shayhewitt</a></p>
 </footer>
+
 <script>
-  function filterCards(cat,btn){
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.product-card').forEach(card=>{
-      card.style.display=(cat==='all'||card.dataset.cat===cat)?'flex':'none';
-    });
-  }
+function filterCards(cat, btn) {
+  const allCards = document.querySelectorAll('.product-card');
+  const allBtns = document.querySelectorAll('.filter-btn');
+  allBtns.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  allCards.forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
 </script>
 </body>
 </html>

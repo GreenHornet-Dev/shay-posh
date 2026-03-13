@@ -7,64 +7,109 @@
   <link rel="stylesheet" href="css/style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
-    .advocate-badge {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: contain;
-      background: #fff;
-      padding: 6px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
-      display: block;
+    /* ── Logo ring wrapper ── */
+    .badge-ring-wrap {
+      position: relative;
+      width: 196px;
+      height: 196px;
       flex-shrink: 0;
+      display: block;
+    }
+    .badge-ring-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(
+        #e8587a 0deg,
+        #f6c90e 60deg,
+        #3bb2ac 120deg,
+        #b794f4 180deg,
+        #81e6c8 240deg,
+        #e8587a 300deg,
+        #e8587a 360deg
+      );
+      z-index: 0;
+    }
+    .badge-ring-wrap::after {
+      content: '★';
+      position: absolute;
+      top: -6px;
+      right: -2px;
+      font-size: 28px;
+      color: #f6c90e;
+      text-shadow: 0 0 6px rgba(0,0,0,0.35);
+      z-index: 3;
+      line-height: 1;
+    }
+    .advocate-badge {
+      position: absolute;
+      inset: 8px;
+      width: calc(100% - 16px);
+      height: calc(100% - 16px);
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      display: block;
+      z-index: 1;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       transform: translateZ(0);
       image-rendering: -webkit-optimize-contrast;
       transition: transform 0.2s, box-shadow 0.2s;
     }
+    a.badge-link {
+      display: block;
+      flex-shrink: 0;
+      line-height: 0;
+      text-decoration: none;
+    }
     a.badge-link:hover .advocate-badge {
       transform: translateZ(0) scale(1.04);
-      box-shadow: 0 6px 20px rgba(232,88,122,0.3);
     }
-    a.badge-link { display: block; flex-shrink: 0; line-height: 0; }
+    a.badge-link:hover .badge-ring-wrap::before {
+      filter: brightness(1.1);
+    }
+    /* SVG fallback sits inside same ring */
+    .badge-fallback-svg {
+      position: absolute;
+      inset: 8px;
+      width: calc(100% - 16px);
+      height: calc(100% - 16px);
+      border-radius: 50%;
+      z-index: 1;
+    }
   </style>
 </head>
 <body>
 <header>
   <div class="logo-area">
     <a class="badge-link" href="https://perfectlyposh.com/shaymatt" target="_blank" title="Shop Shay's Perfectly Posh Store">
-      <img
-        class="advocate-badge"
-        src="images/PoshPA.jpg"
-        alt="Perfectly Posh Advocate"
-        onerror="this.style.display='none'; document.getElementById('badge-fallback').style.display='block';"
-      />
-      <svg id="badge-fallback" class="advocate-badge" width="180" height="180" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="display:none; background:transparent; padding:0; box-shadow:none;">
-        <defs>
-          <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#e8004a;stop-opacity:1" />
-            <stop offset="50%" style="stop-color:#b794f4;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#3bb2ac;stop-opacity:1" />
-          </linearGradient>
-          <linearGradient id="innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#fce4ec;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#e8f8f5;stop-opacity:1" />
-          </linearGradient>
-          <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#e8004a;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#3bb2ac;stop-opacity:1" />
-          </linearGradient>
-        </defs>
-        <circle cx="40" cy="38" r="37" fill="url(#ringGrad)" />
-        <circle cx="40" cy="38" r="31" fill="#fff" />
-        <circle cx="40" cy="38" r="28" fill="url(#innerGrad)" />
-        <text x="40" y="34" font-family="Playfair Display, serif" font-size="16" font-weight="700" fill="#e8004a" text-anchor="middle" dominant-baseline="middle">SP</text>
-        <text x="40" y="48" font-family="Lato, sans-serif" font-size="6" font-weight="700" fill="#3bb2ac" text-anchor="middle" letter-spacing="1.2">ADVOCATE</text>
-        <rect x="12" y="68" width="56" height="10" rx="5" fill="url(#ribbonGrad)" />
-        <text x="40" y="75" font-family="Lato, sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.5">PERFECTLY POSH</text>
-        <polygon points="40,2 41.8,7.5 47.5,7.5 43,11 44.8,16.5 40,13 35.2,16.5 37,11 32.5,7.5 38.2,7.5" fill="#f9c950" />
-      </svg>
+      <div class="badge-ring-wrap">
+        <img
+          class="advocate-badge"
+          src="images/PoshPA.jpg"
+          alt="Perfectly Posh Advocate"
+          onerror="this.style.display='none'; document.getElementById('badge-fallback').style.display='block';"
+        />
+        <svg id="badge-fallback" class="badge-fallback-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+          <defs>
+            <linearGradient id="innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#fce4ec;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#e8f8f5;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#e8587a;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#3bb2ac;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <circle cx="40" cy="40" r="40" fill="url(#innerGrad)" />
+          <text x="40" y="36" font-family="Playfair Display, serif" font-size="18" font-weight="700" fill="#e8587a" text-anchor="middle" dominant-baseline="middle">SP</text>
+          <text x="40" y="52" font-family="Lato, sans-serif" font-size="6.5" font-weight="700" fill="#3bb2ac" text-anchor="middle" letter-spacing="1.2">ADVOCATE</text>
+          <rect x="10" y="64" width="60" height="11" rx="5.5" fill="url(#ribbonGrad)" />
+          <text x="40" y="71.5" font-family="Lato, sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.5">PERFECTLY POSH</text>
+        </svg>
+      </div>
     </a>
     <div class="logo-text">
       <h1>✨ Shop with Shay</h1>

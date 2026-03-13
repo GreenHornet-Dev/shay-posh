@@ -5,10 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sale Alerts – Shop with Shay</title>
   <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .section { max-width:600px; margin:40px auto; padding:30px; }
+    form label { display:block; margin-top:18px; color:#c2477b; font-weight:bold; }
+    form input[type="text"] { width:100%; padding:10px; margin-top:6px; border:1.5px solid #f6c90e; border-radius:6px; font-size:1rem; }
+    form input[type="checkbox"] { margin-right:8px; }
+    .checklist { margin-top:12px; }
+    .checklist label { display:inline-block; margin-right:16px; font-weight:normal; color:#555; margin-top:6px; }
+    .btn { display:inline-block; background:var(--posh-pink); color:#fff; padding:14px 32px; border:none; border-radius:30px; font-weight:bold; font-size:1.05rem; cursor:pointer; margin-top:24px; }
+    .btn:hover { background:var(--posh-pink-dark); }
+    .info-text { font-size:0.9rem; color:#777; margin-top:30px; line-height:1.6; }
+  </style>
 </head>
 <body>
 <header>
-  <div><h1>Shop with Shay</h1><p>Your Independent Perfectly Posh Advocate</p></div>
+  <div class="logo-area">
+    <a class="badge-link" href="https://perfectlyposh.com/shayhewitt" target="_blank" title="Shop Shay's Perfectly Posh Store">
+      <div class="badge-ring-wrap">
+        <img
+          class="advocate-badge"
+          src="images/PoshPA.jpg"
+          alt="Perfectly Posh Advocate"
+          onerror="this.style.display='none'; document.getElementById('badge-fallback').style.display='block';"
+        />
+        <svg id="badge-fallback" class="badge-fallback-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+          <defs>
+            <linearGradient id="innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#fce4ec;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#e8f8f5;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#e8587a;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#3bb2ac;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <circle cx="40" cy="40" r="40" fill="url(#innerGrad)" />
+          <text x="40" y="36" font-family="Playfair Display, serif" font-size="18" font-weight="700" fill="#e8587a" text-anchor="middle" dominant-baseline="middle">SP</text>
+          <text x="40" y="52" font-family="Lato, sans-serif" font-size="6.5" font-weight="700" fill="#3bb2ac" text-anchor="middle" letter-spacing="1.2">ADVOCATE</text>
+          <rect x="10" y="64" width="60" height="11" rx="5.5" fill="url(#ribbonGrad)" />
+          <text x="40" y="71.5" font-family="Lato, sans-serif" font-size="5.5" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.5">PERFECTLY POSH</text>
+        </svg>
+      </div>
+    </a>
+    <div class="logo-text">
+      <h1>✨ Shop with Shay</h1>
+      <p>Your Independent Perfectly Posh Advocate</p>
+    </div>
+  </div>
   <nav>
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
@@ -17,99 +60,42 @@
   </nav>
 </header>
 
-<div class="section" style="max-width:660px;">
+<div class="section">
   <h3>Get Sale Alerts from Shay</h3>
-  <p style="text-align:center;color:#c2477b;margin-bottom:30px;">Pick the Posh products you love. Shay will personally email you the moment they go on sale.</p>
+  <p style="color:#c2477b; margin-bottom:18px;">Pick the Posh products you love. Shay will personally email you the moment they go on sale. 💕</p>
 
-  <!--
-  =======================================================
-  SETUP NOTES FOR SHAY (read before going live)
-  =======================================================
+  <form action="download-alerts.php" method="POST">
+    <label for="userEmail">Your Email Address</label>
+    <input type="text" id="userEmail" name="email" required />
 
-  OPTION A – Self-Hosted PHP (RECOMMENDED – already wired up below)
-  -----------------------------------------------------------------
-  This form submits to sale-alert.php which:
-    1. Emails you at shayitwithposh@mail.com when someone signs up
-    2. Emails the customer a confirmation
-    3. Logs every signup to data/sale_alerts.csv
-    4. You can download that CSV anytime at:
-       https://YOURDOMAIN.com/download-alerts.php?key=PoshRocks2026
-
-  To go live with Option A:
-    1. Upload ALL files to a PHP-enabled host (Hostinger, SiteGround, etc.)
-    2. In sale-alert.php, change "yourdomain.com" to your real domain
-    3. Make sure the data/ folder is writable: chmod 755 data/
-    4. Optionally change the CSV download password in download-alerts.php
-
-  OPTION B – Formspree (no server needed, free tier = 50 submissions/mo)
-  -----------------------------------------------------------------------
-  1. Go to https://formspree.io and create a free account
-  2. Create a new form – set notification email to shayitwithposh@mail.com
-  3. Copy your Form ID (looks like: xpwzabcd)
-  4. Replace the form tag below:
-       <form id="alertForm">
-     with:
-       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-  5. Remove the <script> block at the bottom of this file (Formspree handles submission)
-  6. Optionally add: <input type="hidden" name="_subject" value="New Posh Sale Alert Signup!"/>
-
-  NOTE: With Formspree you do NOT get the CSV log or the customer confirmation email
-  unless you upgrade. Option A gives you both for free on any PHP host.
-  =======================================================
-  -->
-
-  <form id="alertForm">
-    <div class="form-group">
-      <label for="email">Your Email Address</label>
-      <input type="email" id="email" name="email" placeholder="you@email.com" required/>
+    <label style="margin-top:22px;">Products You Want to Watch</label>
+    <div class="checklist">
+      <label><input type="checkbox" name="products[]" value="Bee Calm Hand Creme" /> Bee Calm Hand Creme</label>
+      <label><input type="checkbox" name="products[]" value="Fantasea Hand Creme" /> Fantasea Hand Creme</label>
+      <label><input type="checkbox" name="products[]" value="Down & Dirty Scrub" /> Down & Dirty Scrub</label>
+      <label><input type="checkbox" name="products[]" value="Overnight Success Mask" /> Overnight Success Mask</label>
+      <label><input type="checkbox" name="products[]" value="Stripper Mask" /> Stripper Mask</label>
+      <label><input type="checkbox" name="products[]" value="Sooo Cuke Face Oil" /> Sooo Cuke Face Oil</label>
+      <label><input type="checkbox" name="products[]" value="Salty Dog Scrub" /> Salty Dog Scrub</label>
+      <label><input type="checkbox" name="products[]" value="Snarky Bar" /> Snarky Bar</label>
+      <label><input type="checkbox" name="products[]" value="Bee You Bath Bar" /> Bee You Bath Bar</label>
+      <label><input type="checkbox" name="products[]" value="BFF Body Wash" /> BFF Body Wash</label>
     </div>
 
-    <div class="form-group">
-      <label>Products You Want to Watch</label>
-      <div class="checkbox-grid">
-        <label><input type="checkbox" name="products[]" value="Bee Calm and Carry On Hand Creme"/> Bee Calm Hand Creme</label>
-        <label><input type="checkbox" name="products[]" value="Fantasea Hand Creme"/> Fantasea Hand Creme</label>
-        <label><input type="checkbox" name="products[]" value="Down and Dirty Scrub"/> Down &amp; Dirty Scrub</label>
-        <label><input type="checkbox" name="products[]" value="Overnight Success Mask"/> Overnight Success Mask</label>
-        <label><input type="checkbox" name="products[]" value="Stripper Mask"/> Stripper Mask</label>
-        <label><input type="checkbox" name="products[]" value="Sooo Cuke Balancing Face Oil"/> Sooo Cuke Face Oil</label>
-        <label><input type="checkbox" name="products[]" value="Salty Dog Scrub"/> Salty Dog Scrub</label>
-        <label><input type="checkbox" name="products[]" value="Snarky Bar Scrub Bar"/> Snarky Bar</label>
-        <label><input type="checkbox" name="products[]" value="Bee You Bee Kind Bath Bar"/> Bee You Bath Bar</label>
-        <label><input type="checkbox" name="products[]" value="BFF Body Wash"/> BFF Body Wash</label>
-      </div>
-    </div>
-
-    <button class="btn" type="submit" style="width:100%;font-size:1rem;">Alert Me When They're On Sale!</button>
-    <div id="response"></div>
+    <button type="submit" class="btn">Alert Me When They're On Sale!</button>
   </form>
 
-  <div style="text-align:center;margin-top:30px;">
-    <p style="margin-bottom:12px;">Ready to shop now?</p>
-    <a class="btn" href="https://perfectlyposh.com/shayhewitt" target="_blank">Visit Shay's Posh Store</a>
-  </div>
+  <p style="text-align:center; margin-top:35px; font-size:0.95rem;">Ready to shop now?</p>
+  <p style="text-align:center;"><a href="https://perfectlyposh.com/shayhewitt" target="_blank" class="btn btn-secondary">Visit Shay's Posh Store</a></p>
 
-  <small class="disclaimer">This is the personal site of Shay Hewitt, an Independent Perfectly Posh Advocate. Your email is used only to notify you of Posh sales and will never be sold or shared.</small>
+  <div class="info-text">
+    <p>This is the personal site of Shay Hewitt, an Independent Perfectly Posh Advocate. Your email is used only to notify you of Posh sales and will never be sold or shared.</p>
+  </div>
 </div>
 
 <footer>
   <p>This is the personal website of Shay Hewitt, an Independent Perfectly Posh Advocate. Not owned or operated by Perfectly Posh.</p>
-  <p style="margin-top:6px;"><a href="https://perfectlyposh.com/shayhewitt" target="_blank">perfectlyposh.com/shayhewitt</a></p>
+  <p><a href="https://perfectlyposh.com/shayhewitt" target="_blank">perfectlyposh.com/shayhewitt</a></p>
 </footer>
-
-<script>
-  // This script handles form submission to sale-alert.php (Option A).
-  // If you switch to Formspree (Option B), delete this entire <script> block.
-  document.getElementById('alertForm').addEventListener('submit', async function(e){
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const res  = await fetch('sale-alert.php', {method:'POST', body:data});
-    const json = await res.json();
-    const el   = document.getElementById('response');
-    el.textContent  = json.message;
-    el.style.color  = json.success ? '#2e7d32' : '#c62828';
-    if(json.success) e.target.reset();
-  });
-</script>
 </body>
 </html>
